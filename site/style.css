@@ -1,0 +1,104 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap');
+
+
+*{
+    margin: 0;
+
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    border: solid black;
+    margin-top: 0%;
+    padding: 0.2%;
+    background-color: #FFCF10;
+    
+   
+
+    height: 40%;
+        
+}
+header > .agrupamentoHeader{
+    justify-content: space-between;
+}
+.iconDiv{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 10%;
+    -webkit-text-stroke-width: 1px; /* largura da borda */
+    -webkit-text-stroke-color: #000; /* cor da borda */
+    
+    text-shadow: 5px 5px 5px black;
+    font-size: 3vh;
+    font-family: Alegreya Sans SC;
+}
+header> .esquerdaHeader > .iconDiv > img {
+    width: 15%;
+
+}
+
+header .direitaHeader {
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: space-between;
+    font-family: Alegreya Sans SC;
+    font-size: larger;
+}
+li{
+    border: solid #000;
+    border-radius: 5px;
+    padding: 3px;
+    margin: 5px;
+    list-style: none;
+}
+li > a{
+    text-decoration: none;
+    color: #000;
+    
+}
+
+.agora {
+    font-weight: 800;
+}
+
+body > .banner {
+        height: 100vh; /* 100% da altura da viewport */
+        background-image: url(../img/chupheadGIF.gif);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        
+}
+    
+
+.banner:hover{
+    cursor: pointer;
+    
+}
+.paragrafoBanner {    
+    color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+}
+
+.paragrafoBanner p{
+    -webkit-text-stroke-width: 2px; /* largura da borda */
+    -webkit-text-stroke-color: #000; /* cor da borda */
+    
+    text-shadow: 5px 5px 5px black;
+    font-size: 5vh;
+    font-family: Alegreya Sans SC;
+    padding: 10px;
+
+}
+
