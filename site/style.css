@@ -31,6 +31,11 @@
     height: 40%;
 }
 
+/*Padrão das paginas Dont Deal e The Delicious*/
+body{
+    background-color: rgb(255, 255, 249);
+
+}
 header > .agrupamentoHeader{
     justify-content: space-between;
 }
@@ -114,4 +119,36 @@ body > .banner {
     padding: 10px;
 
 }
+/*Fim padrão*/
 
+/*Pagina home*/
+
+header > .letreiro > img{
+    width: 20%;
+
+}
+.containerIMG{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.caixaIMG{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 15%;
+    background-color: aquamarine;
+
+}
+.imgEsquerda > img{
+    height: 50vh;
+    width: 50vh;
+}
+.imgDireita > img{
+    height: 50vh;
+    width: 50vh;
+}
+
+
+/*Fim pagina Home*/
