@@ -1,0 +1,311 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap');
+
+
+*{
+    margin: 0;
+    font-family: Alegreya Sans SC;
+}
+
+.DontDeal{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    border: solid black;
+    margin-top: 0%;
+    padding: 0.2%;
+    background-color: #FFCF10;
+    
+}
+
+.TheDelicious{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    border: solid black;
+    margin-top: 0%;
+    padding: 0.2%;
+    background-color: #A0E1BF;
+    
+}
+
+/*Padrão das paginas Dont Deal e The Delicious*/
+body{
+    background-color: rgb(255, 255, 226);
+
+}
+
+.iconDiv{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 8%;
+    -webkit-text-stroke-width: 1px; /* largura da borda */
+    -webkit-text-stroke-color: #000; /* cor da borda */
+    
+    text-shadow: 5px 5px 5px black;
+    font-size: 3vh;
+    
+}
+
+.DontDeal > .esquerdaHeader > .iconDiv > img {
+    width: 15%;
+}
+
+.TheDelicious > .esquerdaHeader > .iconDiv > img {
+    width: 10%;
+}
+
+.DontDeal .direitaHeader {
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: space-between;
+    font-size: larger;
+}
+
+.TheDelicious .direitaHeader {
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    justify-content: space-between;
+    font-size: larger;
+}
+
+
+li > a{
+  color: #000;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 18px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+    
+}
+
+li> a:hover{
+    color: #fffbe6;
+    background-color: #2c1b10;
+}
+
+.agora {
+    font-weight: 800;
+}
+
+body > .banner {
+    height: 100vh; 
+    background-image: url(../assets/img/chupheadGIF.gif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+        
+}
+    
+.banner:hover{
+    cursor: pointer;
+    
+}
+
+.paragrafoBanner {    
+    color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+}
+
+.paragrafoBanner p{
+    -webkit-text-stroke-width: 2px; /* largura da borda */
+    -webkit-text-stroke-color: #000; /* cor da borda */
+    
+    text-shadow: 5px 5px 5px black;
+    font-size: 5vh;
+    font-family: Alegreya Sans SC;
+    padding: 10px;
+
+}
+/*Fim padrão*/
+
+/*Pagina home*/
+header> .letreiro{
+    padding: 1vh;
+}
+
+header > .letreiro > img{
+    width: 20%;
+
+}
+.containerIMG{
+    padding: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.caixaIMG{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 15%;
+
+}
+.imgEsquerda{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFCF10;
+    padding: 1vh;
+    gap: 1.5vh;
+}
+.imgEsquerda > img{
+    height: 60vh;
+    width: 60vh;
+}
+.imgDireita{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #A0E1BF;
+    padding: 1vh;
+    gap: 1.5vh;
+}
+.imgDireita > img{
+    height: 60vh;
+    width: 60vh;
+}
+
+.ordemButton {
+    height: 7vh;
+    width: 14vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(195, 195, 195);
+    border-radius: 1vh;
+    cursor: pointer;
+    font-size: 2.5vh;
+}
+
+.ordemButton:hover{
+    background-color: rgb(170, 170, 170);
+    transition: 0.5s;
+}
+
+.UmPoucoSobreCuphead{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5vh;
+   
+}
+
+.caixaTXT{
+    background-color: rgba(0, 0, 0, 0.821);
+    border-radius: 3vh;
+    color: azure;
+
+    width: 40%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: justify;
+    padding: 3vh;
+    gap: 2vh;
+
+}
+
+/*Fim pagina Home*/
+
+/*Login e Cadastro*/
+.containerLogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* importante para centralizar verticalmente */
+  background-color: #f8e9c0;
+}
+
+.caixaLogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffe15d;
+  padding: 30px;
+  border: 3px solid #2c1b10;
+  border-radius: 15px;
+  box-shadow: 6px 6px 0 #aa0000;
+}
+
+
+input {
+  margin: 10px 0;
+  padding: 10px;
+  width: 250px;
+  border-radius: 8px;
+  border: 2px solid #2c1b10;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+  background-color: #aa0000;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #cc0000;
+}
+
+.headerLogin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #aa0000;
+  color: #fffbe6;
+  padding: 15px 30px;
+  border-bottom: 4px solid #2c1b10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.logo {
+  display: flex;
+  font-size: 26px;
+  text-shadow: 2px 2px #2c1b10;
+  align-items: center;
+  gap: 1px;
+}
+
+.logo > img{
+    width: 25%;
+}
+
+.navegacao a {
+  color: #fffbe6;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 18px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.navegacao a:hover {
+  background-color: #2c1b10;
+}
