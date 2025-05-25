@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="./js/sessao.js"></script>
+</head>
+<body >
+     
+    <header class="headerLogin">
+    <div class="logo"><img src="assets/img/XicrinhoDançando.gif" alt=""> Cuphead</div>
+    <nav class="navegacao">
+      <a href="DontDeal.html">Dont Deal With the Devil</a>
+      <a href="TheDelicious.html">The Delicious Last Course</a>
+      <a href="./home.html">Home</a>
+      <a href="./login.html">Login</a>
+      
+    </nav>
+  </header>
+
+    <div class="containerLogin">
+    <div class="caixaLogin">
+        <h2>Quizz</h2>
+
+    <p>Responda algumas perguntas para cadastrar-se!</p>
+    <p>Você ja tinha escutado falar sobre cuphead?(Sim ou Não)</p>
+    <input type="text" id="escutado_input">
+    <p>Sobre o que foi abordado no site, achou interessante?(Sim ou Não)</p>
+    <input type="text" id="interessante_input">
+    <p>Qual dos 3 personagens jogaveis achou mais legal?(Xicrinho, Caneco ou Cálice)</p>
+    <input type="text" id="personagem_input">
+
+    <button onclick="responder()">responder</button>
+
+    </div>
+    </div>
+</body>
+<script>
+
+
+  function responder() {
+    // aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var escutadoVar = escutado_input.value.toLowerCase();
+    var interessanteVar = interessante_input.value.toLowerCase();
+    var personagemVar = personagem_input.value.toLowerCase();
+
+    // Verificando se há algum campo em branco
+    if (escutadoVar != "sim" && escutadoVar != "não") {
+      alert("Apenas 'Sim' ou 'Não' são aceitos! no campo escutado");
+
+      finalizarAguardar();
+      return false;
+      
+    } else if(interessanteVar != "sim" && interessanteVar != "não") {
+      alert("Apenas 'Sim' ou 'Não' são aceitos! no campo interessante");
+
+      finalizarAguardar();
+      return false;
+
+    } else if (personagemVar != "xicrinho" && personagemVar != "caneco" && personagemVar != "cálice") {
+      alert("Apenas 'Xicrinho', 'Caneco' ou 'Cálice' são aceitos!");
+
+      finalizarAguardar();
+      return false;
+
+    }else if (
+      escutadoVar == "" ||
+      interessanteVar == "" ||
+      personagemVar == ""
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/responder", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        escutadoServer: escutadoVar,
+        interessanteServer: interessanteVar,
+        personagemServer: personagemVar,
+        idUsuario: sessionStorage.ID_USUARIO
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+         
+
+         
+
+          setTimeout(() => {
+            window.location = "dashboard/dashboard.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar evniar as respostas!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+     function sumirMensagem() {
+
+  }
+  }
+
+ 
+</script>
+</html>

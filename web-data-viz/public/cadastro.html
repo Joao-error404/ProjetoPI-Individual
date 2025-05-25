@@ -1,46 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="./js/sessao.js"></script>
 </head>
-<body >
-     
-    <header class="headerLogin">
+
+<body>
+
+  <header class="headerLogin">
     <div class="logo"><img src="assets/img/XicrinhoDançando.gif" alt=""> Cuphead</div>
     <nav class="navegacao">
+      <a href="DontDeal.html">Dont Deal With the Devil</a>
+      <a href="TheDelicious.html">The Delicious Last Course</a>
       <a href="./home.html">Home</a>
       <a href="./login.html">Login</a>
     </nav>
   </header>
 
-    <div class="containerLogin">
+  <div class="containerLogin">
     <div class="caixaLogin">
-        <h2>Cadastro</h2>
+      <h2>Cadastro</h2>
 
-    <input type="text" id="email_input" placeholder="E-mail">
+      <input type="text" id="email_input" placeholder="E-mail">
 
-    <input type="text" id="nome_input" placeholder="Nome">
-    
-    <input type="password" id="senha_input" placeholder="Senha">
-    
-    <input type="password" id="confirmacao_senha_input" placeholder="Confrimar Senha">
+      <input type="text" id="nome_input" placeholder="Nome">
 
-    <p>Responda algumas perguntas para cadastrar-se!</p>
-    <p>Você ja tinha escutado falar sobre cuphead?</p>
-    <input type="text" id="escutado_input">
-    <p>Sobre o que foi abordado no site, achou interessante?(Sim ou Não)</p>
-    <input type="text" id="interessante_input">
-    <p>Qual dos 3 personagens jogaveis achou mais legal?(Xicrinho, Caneco ou Cálice)</p>
-    <input type="text" id="personagem_input">
+      <input type="password" id="senha_input" placeholder="Senha">
 
-    <button>Entrar</button>
+      <input type="password" id="confirmacao_senha_input" placeholder="Confrimar Senha">
 
-    <p>Já tem conta? <a href="./login.html">Logar</a></p>
+      <button onclick="cadastrar()">cadastrar</button>
+
+      <p>Já tem conta? <a href="./login.html">Logar</a></p>
     </div>
-    </div>
+  </div>
 </body>
 <script>
 
@@ -54,25 +51,49 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var escutadoVar = escutado_input.value;
-    var interessanteVar = interessante_input.value;
-    var personagemVar = personagem_input.value;
+
 
     // Verificando se há algum campo em branco
-    if (
+    if (senhaVar != confirmacaoSenhaVar) {
+      alert("As senhas não conferem!");
+      
+      return false;
+  
+    }else if (senhaVar.length < 8) {
+      alert("A senha deve ter no mínimo 8 caracteres!");
+      
+      return false;
+    
+    }else if (nomeVar.length < 3) {
+      alert("O nome deve ter no mínimo 3 caracteres!");
+      
+      return false;
+    
+    }else if (emailVar.length < 5) {
+      alert("O e-mail deve ter no mínimo 5 caracteres!");
+      
+      return false;
+    
+    }else if (emailVar.indexOf("@") == -1) {
+      alert("O e-mail deve conter o caractere '@'!");
+      
+      return false;
+    
+    }else if (emailVar.indexOf(".") == -1) {
+      alert("O e-mail deve conter o caractere '.'!");
+      
+      return false;
+
+    } else if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      escutadoVar == "" ||
-      interessanteVar == "" ||
-      personagemVar == ""
+      confirmacaoSenhaVar == ""
     ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+      alert("Todos os campos estão em branco)");
 
-      finalizarAguardar();
+
+      
       return false;
     } else {
       setInterval(sumirMensagem, 5000);
@@ -91,38 +112,37 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        escutadoServer: escutadoVar,
-        interessanteServer: interessanteVar,
-        personagemServer: personagemVar 
       }),
     })
       .then(function (resposta) {
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
+          alert("Cadastro realizado com sucesso!");
 
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
 
           setTimeout(() => {
             window.location = "login.html";
           }, "2000");
 
           limparFormulario();
-          finalizarAguardar();
+          
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
+        
       });
 
     return false;
+    function sumirMensagem() {
+    }
   }
 
- 
+
 </script>
+
 </html>

@@ -186,7 +186,7 @@ header > .letreiro > img{
 
 .ordemButton {
     height: 7vh;
-    width: 14vh;
+    width: 15vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -194,6 +194,8 @@ header > .letreiro > img{
     border-radius: 1vh;
     cursor: pointer;
     font-size: 2.5vh;
+    border: solid black;
+    
 }
 
 .ordemButton:hover{
@@ -228,13 +230,87 @@ header > .letreiro > img{
 
 /*Fim pagina Home*/
 
+/*The delicious last course*/
+.containerTheDelicious{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5vh;
+}
+
+.caixaTheDelicious{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5vh;
+}
+
+.caixaTheDelicious > img{
+    width: 40vh;
+    height: 40vh;
+
+}
+
+.caixaTheDelicious{
+    transition: 0.5s;
+    background-color: rgb(0, 0, 0, 0.821);
+    border-radius: 8vh;
+    color: #fffbe6;
+    padding: 2vh;
+    width: 100%;
+    text-align: justify;
+}
+
+
+/*Fim the delicious last course*/
+/*Pagina Dont Deal*/
+
+.containerDontDeal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5vh;
+    gap: 5vh;
+}
+
+.caixaDontDeal{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5vh;
+}
+
+.caixaDontDeal > img{
+    width: 40vh;
+    height: 40vh;
+
+}
+
+.caixaDontDeal{
+    transition: 0.5s;
+    background-color: rgb(0, 0, 0, 0.821);
+    border-radius: 8vh;
+    color: #fffbe6;
+    padding: 2vh;
+    width: 100%;
+    text-align: justify;
+}
+
+
+
+
+/*Fim pagina dont deal*/
 /*Login e Cadastro*/
 .containerLogin {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* importante para centralizar verticalmente */
-  background-color: #f8e9c0;
+  height: 100vh; 
+  background-color: rgb(255, 255, 226);
 }
 
 .caixaLogin {

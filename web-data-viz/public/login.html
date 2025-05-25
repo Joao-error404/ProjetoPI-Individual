@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="shortcut icon" type="imagex/png" href="assets/img/CupheadLogo.png">
+    <title>Login</title>
     <link rel="stylesheet" href="/css/style.css">
+    <script src="./js/sessao.js"></script>
 </head>
 <body >
      
     <header class="headerLogin">
     <div class="logo"><img src="assets/img/XicrinhoDançando.gif" alt=""> Cuphead</div>
     <nav class="navegacao">
+      <a href="DontDeal.html">Dont Deal With the Devil</a>
+      <a href="TheDelicious.html">The Delicious Last Course</a>
       <a href="home.html">Home</a>
       <a href="cadastro.html">Cadastro</a>
     </nav>
@@ -24,11 +28,15 @@
     
     <input type="password" id="senha_input" placeholder="Senha">
 
-    <button>Entrar</button>
+    <button onclick="entrar()">Entrar</button>
 
     <p>Não tem conta? <a href="cadastro.html">Cadastrar-se</a></p>
     </div>
     </div>
+    <div id="div_aguardar" class="loading-div">
+        </div>
+
+        <div id="div_erros_login"></div>
 </body>
 <script>
 
@@ -42,7 +50,7 @@
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
+            
             return false;
         }
         else {
@@ -70,13 +78,12 @@
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+                    sessionStorage.ID_USUARIO = json.idUsuario;
+
+                    alert("Login realizado com sucesso!");
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "resposta.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -87,7 +94,7 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
+                  
                 });
             }
 
