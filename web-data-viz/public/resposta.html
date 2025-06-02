@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="shortcut icon" type="imagex/png" href="assets/img/CupheadLogo.png">
+    <title>Quiz</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="./js/sessao.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body >
+<body class="bodyQuiz">
      
     <header class="headerLogin">
     <div class="logo"><img src="assets/img/XicrinhoDançando.gif" alt=""> Cuphead</div>
@@ -21,67 +23,243 @@
   </header>
 
     <div class="containerLogin">
-    <div class="caixaLogin">
-        <h2>Quizz</h2>
+      <div id="dashboard" class="dashboardGrafic"></div>
+    <div id="caixaQuiz" class="caixaLogin">
+        <h2>Quiz</h2>
+ 
+      
+    
 
-    <p>Responda algumas perguntas para cadastrar-se!</p>
-    <p>Você ja tinha escutado falar sobre cuphead?(Sim ou Não)</p>
-    <input type="text" id="escutado_input">
-    <p>Sobre o que foi abordado no site, achou interessante?(Sim ou Não)</p>
-    <input type="text" id="interessante_input">
-    <p>Qual dos 3 personagens jogaveis achou mais legal?(Xicrinho, Caneco ou Cálice)</p>
-    <input type="text" id="personagem_input">
-
-    <button onclick="responder()">responder</button>
+    <button onclick="iniciar()">Iniciar Quiz</button>
+    <button onclick="exibirResultado()">Mostrar histórico</button>
 
     </div>
     </div>
 </body>
 <script>
+const listaDeQuestoes = [
+    {
+      pergunta: "Qual(is) o(s) criador(es) do Cuphead",
+      alternativaA: "Chad e Jared",
+      alternativaB: "Mark e jeff",
+      alternativaC: "Miyasaki",
+      alternativaD: "Maddy e Noel",
+      alternativaCorreta: "alternativaA"
+    },
 
+    {
+      pergunta: "Quantos batalhas com Chefões existem no total do jogo?",
+      alternativaA: "19",
+      alternativaB: "21",
+      alternativaC: "23",
+      alternativaD: "26",
+      alternativaCorreta: "alternativaD"
+    },
+
+    {
+      pergunta: "Quantos tiro diferentes são possiveis de desbloquear no jogo?",
+      alternativaA: "5",
+      alternativaB: "9",
+      alternativaC: "8",
+      alternativaD: "6",
+      alternativaCorreta: "alternativaB"
+    },
+
+    {
+      pergunta: "Quantos charmes diferentes são possiveis de desbloquear no jogo?",
+      alternativaA: "10",
+      alternativaB: "13",
+      alternativaC: "9",
+      alternativaD: "11",
+      alternativaCorreta: "alternativaC"
+    },
+
+    {
+      pergunta: "Quantas ilhas existem no total do jogo",
+      alternativaA: "I",
+      alternativaB: "II",
+      alternativaC: "III",
+      alternativaD: "IV",
+      alternativaCorreta: "alternativaD"
+    }
+
+  ]
+
+var acertosQuiz = 0; 
+var contador = 0;
+var final = 0;
+
+function iniciar(){
+acertosQuiz = 0;  
+contador = 0;
+final = 0;
+   caixaQuiz.innerHTML= `
+  <h2>Quiz</h2>
+  ${listaDeQuestoes[0].pergunta}
+  <span>   
+          <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />${listaDeQuestoes[0].alternativaA}
+          <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
+        </span>
+        <span>
+          <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />${listaDeQuestoes[0].alternativaB}
+          <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
+        </span>
+        <span>
+          <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />${listaDeQuestoes[0].alternativaC}
+          <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
+        </span>
+        <span>
+          <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />${listaDeQuestoes[0].alternativaD}
+          <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
+        </span>
+        <button onclick="avancar()">Avançar</button>
+        `
+}
+
+
+
+function avancar(){
+  
+  
+  const selecionada = document.querySelector('input[name="option"]:checked');
+  if (!selecionada) {
+    alert("Por favor, selecione uma alternativa antes de responder!");
+    return;
+  }
+
+  // Verifica se a resposta está correta
+  const respostaCorreta = listaDeQuestoes[contador].alternativaCorreta;
+  if (selecionada.value === respostaCorreta) {
+    alert("Resposta correta!");
+    acertosQuiz++;
+
+    
+  } else {
+    alert("Resposta incorreta!");
+    
+  }
+  contador += 1;
+  console.log(contador);
+  if (contador == 4) {
+     final =1;
+  }
+  if (contador == 5) {
+     final =2;
+  }
+
+if (final == 1) {
+if (contador == 4) {
+    caixaQuiz.innerHTML= `
+  <h2>Quiz</h2>
+  ${listaDeQuestoes[contador].pergunta}
+  <span>   
+           <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />${listaDeQuestoes[contador].alternativaA}
+          <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
+        </span>
+        <span>
+           <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />${listaDeQuestoes[contador].alternativaB}
+          <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
+        </span>
+        <span>
+           <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />${listaDeQuestoes[contador].alternativaC}
+          <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
+        </span>
+        <span>
+           <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />${listaDeQuestoes[contador].alternativaD}
+          <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
+        </span>
+        <button onclick="responder()">Responder</button>
+        `
+  }
+}else if (final == 2) {
+    caixaQuiz.innerHTML= `
+  <h2>Quiz</h2>
+  <h2>Gostaria de ver os seus resultados?<h2>
+      
+        <button onclick="exibirResultado()">Resultado</button>
+        <button onclick="tentarNovamente()">Tentar novamente</button>
+        `
+}else{
+  
+ caixaQuiz.innerHTML= `
+  <h2>Quiz</h2>
+  ${listaDeQuestoes[contador].pergunta}
+  <span>   
+           <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />${listaDeQuestoes[contador].alternativaA}
+          <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
+        </span>
+        <span>
+           <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />${listaDeQuestoes[contador].alternativaB}
+          <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
+        </span>
+        <span>
+           <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />${listaDeQuestoes[contador].alternativaC}
+          <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
+        </span>
+        <span>
+           <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />${listaDeQuestoes[contador].alternativaD}
+          <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
+        </span>
+        <button onclick="avancar()">Avançar</button>
+        `
+}
+}
+  
+ function tentarNovamente(){
+  acertosQuiz = 0;  
+  contador = 0;
+  final = 0;
+caixaQuiz.innerHTML= `
+  <h2>Quiz</h2>
+  ${listaDeQuestoes[0].pergunta}
+  <span>   
+          <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />${listaDeQuestoes[0].alternativaA}
+          <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
+        </span>
+        <span> 
+          <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />${listaDeQuestoes[0].alternativaB}
+          <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
+        </span>
+        <span>
+          <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />${listaDeQuestoes[0].alternativaC}
+          <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
+        </span>
+        <span>
+          <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />${listaDeQuestoes[0].alternativaD}
+          <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
+        </span>
+        <button onclick="avancar()">Avançar</button>
+        `
+
+ }
+  
 
   function responder() {
+  
+  // Seleciona a alternativa marcada
+  const selecionada = document.querySelector('input[name="option"]:checked');
+  if (!selecionada) {
+    alert("Por favor, selecione uma alternativa antes de responder!");
+    return;
+  }
+
+  // Verifica se a resposta está correta
+  const respostaCorreta = listaDeQuestoes[contador].alternativaCorreta;
+  if (selecionada.value === respostaCorreta) {
+    alert("Resposta correta!");
+    avancar()
+    
+  } else {
+    alert("Resposta incorreta!");
+    avancar()
+  }
+ 
     // aguardar();
+     var acertosVar = acertosQuiz;
+     var fkUsuarioVar = sessionStorage.ID_USUARIO;
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var escutadoVar = escutado_input.value.toLowerCase();
-    var interessanteVar = interessante_input.value.toLowerCase();
-    var personagemVar = personagem_input.value.toLowerCase();
-
-    // Verificando se há algum campo em branco
-    if (escutadoVar != "sim" && escutadoVar != "não") {
-      alert("Apenas 'Sim' ou 'Não' são aceitos! no campo escutado");
-
-      finalizarAguardar();
-      return false;
-      
-    } else if(interessanteVar != "sim" && interessanteVar != "não") {
-      alert("Apenas 'Sim' ou 'Não' são aceitos! no campo interessante");
-
-      finalizarAguardar();
-      return false;
-
-    } else if (personagemVar != "xicrinho" && personagemVar != "caneco" && personagemVar != "cálice") {
-      alert("Apenas 'Xicrinho', 'Caneco' ou 'Cálice' são aceitos!");
-
-      finalizarAguardar();
-      return false;
-
-    }else if (
-      escutadoVar == "" ||
-      interessanteVar == "" ||
-      personagemVar == ""
-    ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
-
-      finalizarAguardar();
-      return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
-    }
 
 
     // Enviando o valor da nova input
@@ -93,9 +271,8 @@
       body: JSON.stringify({
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
-        escutadoServer: escutadoVar,
-        interessanteServer: interessanteVar,
-        personagemServer: personagemVar,
+        acertosServer: acertosVar,
+        fkUsuarioServer: fkUsuarioVar,
         idUsuario: sessionStorage.ID_USUARIO
       }),
     })
@@ -105,11 +282,7 @@
         if (resposta.ok) {
          
 
-         
-
-          setTimeout(() => {
-            window.location = "dashboard/dashboard.html";
-          }, "2000");
+        
 
           limparFormulario();
           finalizarAguardar();
@@ -127,6 +300,57 @@
 
   }
   }
+
+  function exibirResultado() {
+  const fkUsuario = sessionStorage.ID_USUARIO;
+  caixaQuiz.innerHTML = `
+    <div id="kpis" style="display: flex; gap: 30px; margin-bottom: 20px;"></div>
+    <h2>Resultados das Tentativas</h2>
+    <canvas id="graficoTentativas" width="400" height="200"></canvas>
+    <button onclick="tentarNovamente()">Tentar novamente</button>
+  `;
+
+  fetch(`/usuarios/tentativas/${fkUsuario}`)
+    .then(res => res.json())
+    .then(dados => {
+      // KPIs
+      const totalTentativas = dados.length;
+      const somaAcertos = dados.reduce((soma, t) => soma + t.acertos, 0);
+      const mediaAcertos = totalTentativas > 0 ? (somaAcertos / totalTentativas).toFixed(2) : 0;
+
+      document.getElementById('kpis').innerHTML = `
+        <div class="kpi-item"><strong>Total de Tentativas:</strong> ${totalTentativas}</div>
+        <div class="kpi-item"><strong>Soma de Acertos:</strong> ${somaAcertos}</div>
+        <div class="kpi-item"><strong>Média de Acertos:</strong> ${mediaAcertos}</div>
+      `;
+
+      // Gráfico
+      const labels = dados.map(t => `Tentativa ${t.numeroTentativas}`);
+      const acertos = dados.map(t => t.acertos);
+
+      const ctx = document.getElementById('graficoTentativas').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Acertos por Tentativa',
+            data: acertos,
+            backgroundColor: '#c31c1c'
+          }]
+        },
+        options: {
+          scales: {
+            y: { beginAtZero: true, max: 5 }
+          }
+        }
+      });
+    })
+    .catch(err => {
+      caixaQuiz.innerHTML += "<p>Erro ao carregar resultados.</p>";
+      console.error(err);
+    });
+}
 
  
 </script>

@@ -83,23 +83,22 @@ function cadastrar(req, res) {
 }
 
 function responder(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var interessante = req.body.interessanteServer;
-    var escutado = req.body.escutadoServer;
-    var personagem = req.body.personagemServer;
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html 
+    var fkUsuario = req.body.fkUsuarioServer;
+    var acertos = req.body.acertosServer;
     var idUsuario = req.body.idUsuario;
 
     // Faça as validações dos valores
-    if (interessante == undefined) {
-        res.status(400).send("Seu nome está undefined!");
-    } else if (escutado == undefined) {
-        res.status(400).send("Seu interesse está undefined!");
-    } else if (personagem == undefined) {
-        res.status(400).send("Sua senha está undefined!");
+    if (fkUsuario == undefined) {
+        res.status(400).send("Seu fkUsuario está undefined!");
+    } else if (acertos == undefined) {
+        res.status(400).send("Seu acertos está undefined!");
+    } else if (idUsuario == undefined) {
+        res.status(400).send("Seu idUsuario está undefined!");
     }   else{
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.responder(interessante, escutado, personagem, idUsuario)
+        usuarioModel.responder(fkUsuario, acertos, idUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -117,8 +116,20 @@ function responder(req, res) {
     }
 }
 
+
+function tentativas(req, res) {
+    var fkUsuario = req.params.fkUsuario;
+    usuarioModel.tentativas(fkUsuario)
+        .then(function (resultado) {
+            res.json(resultado);
+        })
+        .catch(function (erro) {
+            res.status(500).json(erro.sqlMessage);
+        });
+}
 module.exports = {
     autenticar,
     cadastrar,
-    responder
+    responder,
+    tentativas 
 }

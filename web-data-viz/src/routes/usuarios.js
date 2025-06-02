@@ -16,4 +16,8 @@ router.post("/responder", function (req, res) {
     usuarioController.responder(req, res);
 });
 
+router.get("/tentativas/:fkUsuario", function (req, res) {
+    usuarioController.tentativas(req, res);
+});
+
 module.exports = router;

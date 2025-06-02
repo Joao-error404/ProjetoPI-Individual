@@ -17,6 +17,7 @@
       <a href="TheDelicious.html">The Delicious Last Course</a>
       <a href="home.html">Home</a>
       <a href="cadastro.html">Cadastro</a>
+      <a onclick="quiz()">Quiz</a>
     </nav>
   </header>
 
@@ -39,6 +40,17 @@
         <div id="div_erros_login"></div>
 </body>
 <script>
+    function quiz(){
+        if (sessionStorage.ID_USUARIO == undefined) {
+            alert('Você precisa estar logado para fazer o Quiz!')
+        }else{
+            window.location = "resposta.html"
+
+        }
+
+
+    }
+
 
 
     function entrar() {
@@ -93,7 +105,7 @@
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {
-                    console.error(texto);
+                    alert(texto);
                   
                 });
             }

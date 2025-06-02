@@ -16,7 +16,7 @@
     margin-top: 0%;
     padding: 0.2%;
     background-color: #FFCF10;
-    
+    height: 20%;
 }
 
 .TheDelicious{
@@ -26,8 +26,9 @@
     list-style: none;
     border: solid black;
     margin-top: 0%;
-    padding: 0.2%;
+    padding: 0.4%;
     background-color: #A0E1BF;
+    height: 20%;
     
 }
 
@@ -41,7 +42,7 @@ body{
     display: flex;
     align-items: center;
     flex-direction: row;
-    gap: 8%;
+    gap: 5%;
     -webkit-text-stroke-width: 1px; /* largura da borda */
     -webkit-text-stroke-color: #000; /* cor da borda */
     
@@ -51,7 +52,7 @@ body{
 }
 
 .DontDeal > .esquerdaHeader > .iconDiv > img {
-    width: 15%;
+   width: 15%;
 }
 
 .TheDelicious > .esquerdaHeader > .iconDiv > img {
@@ -80,7 +81,7 @@ body{
 li > a{
   color: #000;
   text-decoration: none;
-  margin-left: 20px;
+  /* margin-left: 20px; */
   font-size: 18px;
   padding: 5px 10px;
   border-radius: 8px;
@@ -214,7 +215,7 @@ header > .letreiro > img{
 .caixaTXT{
     background-color: rgba(0, 0, 0, 0.821);
     border-radius: 3vh;
-    color: azure;
+    color: #ffffff;
 
     width: 40%;
     height: 40%;
@@ -253,13 +254,13 @@ header > .letreiro > img{
 
 }
 
-.caixaTheDelicious{
+.caixaTheDelicious {
     transition: 0.5s;
     background-color: rgb(0, 0, 0, 0.821);
     border-radius: 8vh;
-    color: #fffbe6;
+    color: #ffffff;
     padding: 2vh;
-    width: 100%;
+    width: 95%;
     text-align: justify;
 }
 
@@ -273,16 +274,10 @@ header > .letreiro > img{
     align-items: center;
     justify-content: center;
     padding: 5vh;
-    gap: 5vh;
+    gap: 3vh;
 }
 
-.caixaDontDeal{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 5vh;
-}
+
 
 .caixaDontDeal > img{
     width: 40vh;
@@ -291,14 +286,20 @@ header > .letreiro > img{
 }
 
 .caixaDontDeal{
-    transition: 0.5s;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8vh;
     background-color: rgb(0, 0, 0, 0.821);
     border-radius: 8vh;
-    color: #fffbe6;
+    color: #ffffff;
     padding: 2vh;
-    width: 100%;
+    width: 95%;
     text-align: justify;
 }
+
+
 
 
 
@@ -329,6 +330,14 @@ input {
   margin: 10px 0;
   padding: 10px;
   width: 250px;
+  border-radius: 8px;
+  border: 2px solid #2c1b10;
+}
+
+span > input{
+  margin: 10px 0;
+  padding: 10px;
+  width: 20px;
   border-radius: 8px;
   border: 2px solid #2c1b10;
 }
@@ -384,4 +393,32 @@ button:hover {
 
 .navegacao a:hover {
   background-color: #2c1b10;
+}
+
+.kpi-item {
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #aa0000;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  border: solid black;
+}
+
+.containerLogin{
+    background-image: url(../assets/img/artcuphead-show-80.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.containerGIF {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5vh;
+    gap: 3vh;
+
 }
