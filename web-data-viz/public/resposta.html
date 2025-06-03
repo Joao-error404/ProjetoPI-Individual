@@ -237,11 +237,19 @@ caixaQuiz.innerHTML= `
   if (selecionada.value === respostaCorreta) {
     alert("Resposta correta!");
     acertosQuiz ++;
+    acertosQuiz ++;
     
   } else {
     alert("Resposta incorreta!");
    
   }
+ caixaQuiz.innerHTML= `
+  <h2>Quiz</h2>
+  <h2>Gostaria de ver os seus resultados?<h2>
+      
+        <button onclick="exibirResultado()">Resultado</button>
+        <button onclick="tentarNovamente()">Tentar novamente</button>
+        `
  caixaQuiz.innerHTML= `
   <h2>Quiz</h2>
   <h2>Gostaria de ver os seus resultados?<h2>
@@ -318,11 +326,7 @@ caixaQuiz.innerHTML= `
 for (let i = 0; i < dados.length; i++) {
   somaAcertos += dados[i].acertos;
 }
-  if (totalTentativas > 0) {
-    var mediaAcertos = somaAcertos / totalTentativas;
-  }else {
-    mediaAcertos = 0;
-  }
+      const mediaAcertos = totalTentativas > 0 ? (somaAcertos / totalTentativas).toFixed(2) : 0;
 
       document.getElementById('kpis').innerHTML = `
         <div class="kpi-item"><strong>Total de Tentativas:</strong> ${totalTentativas}</div>
