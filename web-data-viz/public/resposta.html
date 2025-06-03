@@ -318,7 +318,11 @@ caixaQuiz.innerHTML= `
 for (let i = 0; i < dados.length; i++) {
   somaAcertos += dados[i].acertos;
 }
-      const mediaAcertos = totalTentativas > 0 ? (somaAcertos / totalTentativas).toFixed(2) : 0;
+  if (totalTentativas > 0) {
+    var mediaAcertos = somaAcertos / totalTentativas;
+  }else {
+    mediaAcertos = 0;
+  }
 
       document.getElementById('kpis').innerHTML = `
         <div class="kpi-item"><strong>Total de Tentativas:</strong> ${totalTentativas}</div>
