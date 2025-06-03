@@ -143,9 +143,6 @@ function avancar(){
   if (contador == 4) {
      final =1;
   }
-  if (contador == 5) {
-     final =2;
-  }
 
 if (final == 1) {
 if (contador == 4) {
@@ -171,14 +168,6 @@ if (contador == 4) {
         <button onclick="responder()">Responder</button>
         `
   }
-}else if (final == 2) {
-    caixaQuiz.innerHTML= `
-  <h2>Quiz</h2>
-  <h2>Gostaria de ver os seus resultados?<h2>
-      
-        <button onclick="exibirResultado()">Resultado</button>
-        <button onclick="tentarNovamente()">Tentar novamente</button>
-        `
 }else{
   
  caixaQuiz.innerHTML= `
@@ -247,13 +236,19 @@ caixaQuiz.innerHTML= `
   const respostaCorreta = listaDeQuestoes[contador].alternativaCorreta;
   if (selecionada.value === respostaCorreta) {
     alert("Resposta correta!");
-    avancar()
+    acertosQuiz ++;
     
   } else {
     alert("Resposta incorreta!");
-    avancar()
+   
   }
- 
+ caixaQuiz.innerHTML= `
+  <h2>Quiz</h2>
+  <h2>Gostaria de ver os seus resultados?<h2>
+      
+        <button onclick="exibirResultado()">Resultado</button>
+        <button onclick="tentarNovamente()">Tentar novamente</button>
+        `
     // aguardar();
      var acertosVar = acertosQuiz;
      var fkUsuarioVar = sessionStorage.ID_USUARIO;
@@ -311,11 +306,18 @@ caixaQuiz.innerHTML= `
   `;
 
   fetch(`/usuarios/tentativas/${fkUsuario}`)
-    .then(res => res.json())
-    .then(dados => {
-      // KPIs
+    .then(function(res){
+     return res.json()
+    })
+    .then(function (dados)  {
+      
       const totalTentativas = dados.length;
-      const somaAcertos = dados.reduce((soma, t) => soma + t.acertos, 0);
+
+      let somaAcertos = 0;
+
+for (let i = 0; i < dados.length; i++) {
+  somaAcertos += dados[i].acertos;
+}
       const mediaAcertos = totalTentativas > 0 ? (somaAcertos / totalTentativas).toFixed(2) : 0;
 
       document.getElementById('kpis').innerHTML = `
@@ -324,9 +326,14 @@ caixaQuiz.innerHTML= `
         <div class="kpi-item"><strong>Média de Acertos:</strong> ${mediaAcertos}</div>
       `;
 
-      // Gráfico
-      const labels = dados.map(t => `Tentativa ${t.numeroTentativas}`);
-      const acertos = dados.map(t => t.acertos);
+     
+const labels = [];
+const acertos = [];
+
+for (let i = 0; i < dados.length; i++) {
+  labels.push(`Tentativa ${dados[i].numeroTentativas}`);
+  acertos.push(dados[i].acertos);
+}
 
       const ctx = document.getElementById('graficoTentativas').getContext('2d');
       new Chart(ctx, {

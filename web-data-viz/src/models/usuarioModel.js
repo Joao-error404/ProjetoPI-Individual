@@ -23,7 +23,7 @@ function cadastrar(nome, email, senha) {
 }
 
 async function responder(fkUsuario, acertos) {
-    // Busca o maior numeroTentativas do usuário
+   
     const buscaSql = `
         SELECT IFNULL(MAX(numeroTentativas), 0) + 1 AS proximaTentativa
         FROM Quiz

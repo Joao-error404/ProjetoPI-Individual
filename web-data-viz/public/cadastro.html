@@ -66,47 +66,45 @@ function quiz(){
 
 
     // Verificando se há algum campo em branco
-    if (senhaVar != confirmacaoSenhaVar) {
-      alert("As senhas não conferem!");
-      
-      return false;
-  
-    }else if (senhaVar.length < 8) {
-      alert("A senha deve ter no mínimo 8 caracteres!");
-      
-      return false;
-    
-    }else if (nomeVar.length < 3) {
-      alert("O nome deve ter no mínimo 3 caracteres!");
-      
-      return false;
-    
-    }else if (emailVar.length < 5) {
-      alert("O e-mail deve ter no mínimo 5 caracteres!");
-      
-      return false;
-    
-    }else if (emailVar.indexOf("@") == -1) {
-      alert("O e-mail deve conter o caractere '@'!");
-      
-      return false;
-    
-    }else if (emailVar.indexOf(".") == -1) {
-      alert("O e-mail deve conter o caractere '.'!");
-      
-      return false;
-
-    } else if (
+     if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == ""
     ) {
-      alert("Todos os campos estão em branco)");
-
-
+      alert("Todos os campos precisam estar preenchidos!");
+      return;
       
-      return false;
+    }else if (senhaVar.length < 8) {
+      alert("A senha deve ter no mínimo 8 caracteres!");
+      
+      return;
+    
+    }else if (nomeVar.length < 3) {
+      alert("O nome deve ter no mínimo 3 caracteres!");
+      
+      return;
+    
+    }else if (emailVar.length < 5) {
+      alert("O e-mail deve ter no mínimo 5 caracteres!");
+      
+      return;
+    
+    }else if (!emailVar.includes("@") ) {
+      alert("O e-mail deve conter o caractere '@'!");
+      
+      return;
+    
+    }else if (!emailVar.includes(".") ) {
+      alert("O e-mail deve conter o caractere '.'!");
+      
+      return;
+
+    } else if (senhaVar != confirmacaoSenhaVar) {
+      alert("As senhas não conferem!");
+      
+      return;
+  
     } else {
       setInterval(sumirMensagem, 5000);
     }
