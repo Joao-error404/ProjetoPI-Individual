@@ -416,8 +416,24 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     padding: 5vh;
     gap: 3vh;
 
+}
+
+.tutorial{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.containerChad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5vh;
+    gap: 3vh;
 }
